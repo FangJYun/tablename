@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<VBox xmlns="http://javafx.com/javafx/8"
+  xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="com.example.tablename.controller.EasyPoiExcelController"
+  spacing="10">
+  <padding>
+    <Insets top="20"/>
+  </padding>
+  <Label text="考勤模版生成考勤记录sql" style="-fx-font-size: 18;"/>
+  <HBox spacing="10">
+    <Button text="选择Excel文件" onAction="#handleFileSelect"/>
+    <Label fx:id="fileNameLabel" text="未选择文件"/>
+  </HBox>
+  <AnchorPane prefWidth="1080" prefHeight="400">
+    <TextArea fx:id="resultTextArea" AnchorPane.leftAnchor="0"
+      AnchorPane.rightAnchor="0"
+      AnchorPane.topAnchor="0"
+      AnchorPane.bottomAnchor="0"/>
+  </AnchorPane>
+
+</VBox>

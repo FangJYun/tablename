@@ -15,7 +15,7 @@
   </properties>
 
   <dependencies>
-    <dependency>
+    <!--<dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>17.0.2</version>
@@ -29,7 +29,7 @@
       <groupId>org.controlsfx</groupId>
       <artifactId>controlsfx</artifactId>
       <version>11.1.2</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
@@ -42,6 +42,23 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>cn.afterturn</groupId>
+      <artifactId>easypoi-base</artifactId>
+      <version>4.4.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.afterturn</groupId>
+      <artifactId>easypoi-web</artifactId>
+      <version>4.4.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.afterturn</groupId>
+      <artifactId>easypoi-annotation</artifactId>
+      <version>4.4.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -51,8 +68,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.10.1</version>
         <configuration>
-          <source>11</source>
-          <target>11</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
       <!--<plugin>
@@ -63,31 +80,57 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
               <mainClass>com.example.tablename.HelloApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
       </plugin>-->
       <plugin>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-maven-plugin</artifactId>
-        <version>0.0.8</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.example.tablename.HelloApplication</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
         <executions>
           <execution>
-            <!-- Default configuration for running with: mvn clean javafx:run -->
-            <id>default-cli</id>
-            <configuration>
-              <mainClass>com.example.tablename/com.example.tablename.HelloApplication</mainClass>
-              <launcher>app</launcher>
-              <jlinkZipName>app</jlinkZipName>
-              <jlinkImageName>app</jlinkImageName>
-              <noManPages>true</noManPages>
-              <stripDebug>true</stripDebug>
-              <noHeaderFiles>true</noHeaderFiles>
-            </configuration>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
+<!--      <plugin>-->
+<!--        <groupId>org.openjfx</groupId>-->
+<!--        <artifactId>javafx-maven-plugin</artifactId>-->
+<!--        <version>0.0.8</version>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            &lt;!&ndash; Default configuration for running with: mvn clean javafx:run &ndash;&gt;-->
+<!--            <id>default-cli</id>-->
+<!--            <configuration>-->
+<!--              <mainClass>com.example.tablename/com.example.tablename.HelloApplication</mainClass>-->
+<!--              <launcher>app</launcher>-->
+<!--              <jlinkZipName>app</jlinkZipName>-->
+<!--              <jlinkImageName>app</jlinkImageName>-->
+<!--              <noManPages>true</noManPages>-->
+<!--              <stripDebug>true</stripDebug>-->
+<!--              <noHeaderFiles>true</noHeaderFiles>-->
+<!--            </configuration>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
     </plugins>
   </build>
   <repositories>
